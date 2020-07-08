@@ -1,0 +1,29 @@
+- name: Configure CA certificates
+  become: yes
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Create directories
+      file:
+        path: /usr/share/ca-certificates/{{ item.path }}
+        state: directory
+        mode: '{{ item.mode }}'
+      with_filetree: "{{ system_ca_certificates__src }}"
+      when: item.state == 'directory'
+    
+    - name: Copy CA certificates
+      copy:
+        src: '{{ item.src }}'
+        dest: /usr/share/ca-certificates/{{ item.path }}
+        mode: '{{ item.mode }}'
+      with_filetree: "{{ system_ca_certificates__src }}"
+      when: item.state == 'file'
+    
+    - name: Add entiry to /etc/ca-certificates.conf
+      lineinfile:
+        path: /etc/ca-certificates.conf
+        line: "{{ item.path }}"
+      with_filetree: "{{ system_ca_certificates__src }}"
+      when: item.state == 'file' and (item.path | dirname)
+    
+    - name: Update CA certificates
+      command: /usr/sbin/update-ca-certificates

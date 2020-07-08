@@ -1,2 +1,8 @@
-- debug:
-    msg: "hello,world!"
+- name: Include roles
+  include_role:
+    name: "{{ devpc__role_name }}"
+  loop:
+    - devpc_proxy
+    - system_ca_certificates
+  loop_control:
+    loop_var: devpc__role_name

@@ -1,0 +1,9 @@
+- name: Validate the variable "devpc_proxy__envs"
+  fail:
+    msg: 'The variable "devpc_proxy__envs" must be specified.'
+  when: devpc_proxy__enabled and not (devpc_proxy__envs | default(""))
+
+- name: Ensure to access the variable "devpc_proxy__envs" from other roles
+  set_fact:
+    devpc_proxy__enabled: "{{ devpc_proxy__enabled }}"
+    devpc_proxy__envs: "{{ devpc_proxy__envs }}"
