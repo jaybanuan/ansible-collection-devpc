@@ -1,0 +1,17 @@
+- name: Install dependencies of Ansible
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install pip3 and sshpass for Ansible
+      apt:
+        name:
+          - python3-pip
+          - sshpass
+
+- name: User configuration for Ansible
+  become: true
+  become_user: "{{ devpc__user }}"
+  block:
+    - name: Install Ansible
+      pip:
+        name: ansible

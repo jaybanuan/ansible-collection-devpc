@@ -3,6 +3,16 @@
     name: "{{ devpc__role_name }}"
   loop:
     - devpc_proxy
+    - system_environment_proxy
+    - system_apt_proxy
     - system_ca_certificates
+    - system_docker
+    - system_docker_proxy
+    - system_git
+    - system_vscode
+    - system_misc_apps
+    - user_git
+    - user_ansible
+    - user_docker
   loop_control:
     loop_var: devpc__role_name

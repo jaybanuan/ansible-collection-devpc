@@ -1,0 +1,15 @@
+- name: Proxy for user
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  when:
+    - devpc_proxy__enabled
+    - system_environment_proxy__enabled
+  block:
+    - name: Add proxy envs to /etc/environment
+      ini_file:
+        path: /etc/environment
+        no_extra_spaces: yes
+        section: null
+        option: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop: "{{ devpc_proxy__envs | dict2items }}"

@@ -1,0 +1,17 @@
+- name: Visual Studio Code
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Add Microsoft signing key
+      apt_key:
+        url: https://packages.microsoft.com/keys/microsoft.asc
+        keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+      
+    - name: Add apt repository for Visual Studio Code
+      apt_repository:
+        repo: "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main"
+        filename: vscode
+      
+    - name: Install Visual Studio Code
+      apt:
+        name: code

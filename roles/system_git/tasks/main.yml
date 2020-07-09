@@ -1,0 +1,7 @@
+- name: Git
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install Git
+      apt:
+        name: git

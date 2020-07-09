@@ -1,0 +1,9 @@
+- name: User configuration for Docker
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Add user to the group "docker"
+      user:
+        name: "{{ devpc__user }}"
+        groups: docker
+        append: yes

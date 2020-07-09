@@ -1,0 +1,23 @@
+- name: Configure proxy for docker
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  when:
+    - devpc_proxy__enabled
+    - system_docker_proxy__enabled
+  block:
+    - name: Create directory "/etc/systemd/system/docker.service.d"
+      file:
+        path: /etc/systemd/system/docker.service.d
+        state: directory
+
+    - name: Create "/etc/systemd/system/docker.service.d/proxy.conf"
+      template:
+        src: proxy.conf.j2
+        dest: /etc/systemd/system/docker.service.d/proxy.conf
+
+    - name: system_docker_proxy__restart_docker_service
+      systemd:
+        name: docker
+        enabled: yes
+        state: restarted
+        daemon_reload: yes

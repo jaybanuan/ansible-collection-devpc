@@ -1,0 +1,14 @@
+- name: Misc Apps
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install Misc Apps
+      apt:
+        name: "{{ system_misc_apps__packages }}"
+        update_cache: yes
+      vars:
+        system_misc_apps__packages:
+          - curl
+          - tree
+          - meld
+          - virt-manager

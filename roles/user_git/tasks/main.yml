@@ -1,0 +1,15 @@
+- name: User configuration for Docker
+  become: true
+  become_user: "{{ devpc__user }}"
+  block:
+    - name: Create directory ~/bin
+      file:
+        path: ~/bin
+        state: directory
+    
+    - name: Copy Git related scripts
+      template:
+        src: git-config-username.sh.j2
+        dest: ~/bin/git-config-{{ item.name }}.sh
+        mode: u=rx,g=rx,o=r
+      loop: "{{ user_git__users }}"
