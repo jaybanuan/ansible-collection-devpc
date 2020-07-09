@@ -1,0 +1,2 @@
+system_timesyncd__conf_entries:
+  NTP: ntp.nict.jp

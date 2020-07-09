@@ -1,0 +1,22 @@
+- name: timesyncd
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Create directory
+      file:
+        path: /etc/systemd/timesyncd.conf.d
+        state: directory
+
+    - name: Configure timesyncd
+      ini_file:
+        path: /etc/systemd/timesyncd.conf.d/00ntp.conf
+        no_extra_spaces: yes
+        section: Time
+        option: "{{item.key}}"
+        value: "{{item.value}}"
+      loop: "{{ system_timesyncd__conf_entries | default({}, true) | dict2items }}"
+    
+    - name: Restart systemd-timesyncd
+      systemd:
+        name: systemd-timesyncd
+        state: restarted

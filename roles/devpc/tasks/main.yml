@@ -6,6 +6,7 @@
     - system_environment_proxy
     - system_apt_proxy
     - system_ca_certificates
+    - system_timesyncd
     - system_docker
     - system_docker_proxy
     - system_git
