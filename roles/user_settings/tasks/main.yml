@@ -6,3 +6,4 @@
   vars:
     user_settings__entries:
       "/org/gnome/desktop/screensaver/lock-enabled": "false"
+      "/org/gnome/desktop/session/idle-delay": "0"
