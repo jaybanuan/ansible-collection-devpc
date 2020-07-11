@@ -1,4 +1,4 @@
-- name: Configure proxy for docker
+- name: Docker (proxy configuration)
   become: true
   become_user: "{{ devpc__superuser }}"
   when:

@@ -1,0 +1,8 @@
+- name: Settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ user_settings__entries | dict2items }}"
+  vars:
+    user_settings__entries:
+      "/org/gnome/desktop/screensaver/lock-enabled": "false"

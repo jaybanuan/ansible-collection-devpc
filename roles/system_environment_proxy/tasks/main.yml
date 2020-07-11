@@ -1,4 +1,4 @@
-- name: Proxy for user
+- name: /etc/environment
   become: true
   become_user: "{{ devpc__superuser }}"
   when:

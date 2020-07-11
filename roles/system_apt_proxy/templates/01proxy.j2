@@ -1,7 +1,7 @@
-{% if dev_proxy__envs.http_proxy | default %}
-Acquire::http::proxy "{{ dev_proxy__envs.http_proxy }}";
+{% if devpc_proxy__envs.http_proxy | default %}
+Acquire::http::proxy "{{ devpc_proxy__envs.http_proxy }}";
 {% endif %}
 
-{% if dev_proxy__envs.https_proxy | default %}
-Acquire::https::proxy "{{ dev_proxy__envs.https_proxy }}";
+{% if devpc_proxy__envs.https_proxy | default %}
+Acquire::https::proxy "{{ devpc_proxy__envs.https_proxy }}";
 {% endif %}

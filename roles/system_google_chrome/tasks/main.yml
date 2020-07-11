@@ -1,0 +1,16 @@
+- name: Google Chrome
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Add signing key
+      apt_key:
+        url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+      
+    - name: Add apt repository
+      apt_repository:
+        repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+        filename: google-chrome
+      
+    - name: Install Google Chrome
+      apt:
+        name: google-chrome-stable

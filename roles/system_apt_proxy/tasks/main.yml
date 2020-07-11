@@ -1,4 +1,4 @@
-- name: Proxy configuration for apt
+- name: apt (proxy configuration)
   become: true
   become_user: "{{ devpc__superuser }}"
   when:

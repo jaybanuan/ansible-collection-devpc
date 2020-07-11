@@ -1,0 +1,4 @@
+- name: Favorite apps
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "{{ user_favorite_apps__desktop_files }}"

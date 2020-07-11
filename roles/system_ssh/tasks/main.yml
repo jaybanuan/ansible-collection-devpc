@@ -1,0 +1,8 @@
+- name: ssh
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install ssh related packages
+      apt:
+        name:
+          - sshpass

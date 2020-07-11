@@ -1,4 +1,4 @@
-- name: Configure CA certificates
+- name: CA certificates
   become: yes
   become_user: "{{ devpc__superuser }}"
   block:

@@ -7,11 +7,17 @@
     - system_apt_proxy
     - system_ca_certificates
     - system_timesyncd
+    - system_python3
+    - system_ssh
     - system_docker
     - system_docker_proxy
     - system_git
+    - system_google_chrome
     - system_vscode
     - system_misc_apps
+    - user_xdg_user_dirs
+    - user_settings
+    - user_favorite_apps
     - user_git
     - user_ansible
     - user_docker

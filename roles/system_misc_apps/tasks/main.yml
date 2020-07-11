@@ -12,3 +12,8 @@
           - tree
           - meld
           - virt-manager
+
+    - name: Install Slack
+      snap:
+        name: slack
+        classic: yes

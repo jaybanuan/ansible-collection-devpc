@@ -1,0 +1,11 @@
+- name: XDG user directories
+  become: true
+  become_user: "{{ devpc__user }}"
+  block:
+    - name: Update XDG user directories
+      script: xdg-user-dirs-init.sh
+
+#- name: Clear old XDG user directories in the bookmarks on Nautilus
+#  file:
+#    path: ~/.config/gtk-3.0/bookmarks
+#    state: absent
