@@ -18,6 +18,7 @@
     - user_xdg_user_dirs
     - user_settings
     - user_favorite_apps
+    - user_google_chrome
     - user_git
     - user_ansible
     - user_docker

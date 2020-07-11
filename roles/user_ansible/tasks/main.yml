@@ -1,4 +1,4 @@
-- name: User configuration for Ansible
+- name: Ansible
   become: true
   become_user: "{{ devpc__user }}"
   block:

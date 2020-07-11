@@ -1,0 +1,9 @@
+- name: CA certificates
+  become: yes
+  become_user: "{{ devpc__user }}"
+  block:
+    # see below 
+    #   https://wiki.debian.org/DefaultWebBrowser
+    #   https://wiki.archlinux.jp/index.php/Xdg-open
+    - name: Set default browser
+      command: xdg-settings set default-web-browser google-chrome.desktop
