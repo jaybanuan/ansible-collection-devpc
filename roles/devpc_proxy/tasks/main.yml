@@ -1,9 +1,21 @@
-- name: Validate the variable "devpc_proxy__envs"
+- name: Validate the variable "devpc_proxy__protocols"
   fail:
-    msg: 'The variable "devpc_proxy__envs" must be specified.'
-  when: devpc_proxy__enabled and not (devpc_proxy__envs | default(""))
+    msg: 'The variable "devpc_proxy__protocols" must be specified.'
+  when: devpc_proxy__enabled and not (devpc_proxy__protocols | default(""))
+
+- name: Create variable "devpc_proxy__envs" - phase 1
+  set_fact:
+    devpc_proxy__envs: '{{ devpc_proxy__envs | default({}) | combine({ "proxy_" + item.key: item.value}) }}'
+  loop: '{{ devpc_proxy__protocols | dict2items }}'
+
+- name: Create variable "devpc_proxy__envs" - phase 2
+  set_fact:
+    devpc_proxy__envs: '{{ devpc_proxy__envs | combine({ "no_proxy": devpc_proxy__no_proxy | join(",") }) }}'
+
+- debug:
+    var: devpc_proxy__envs
 
 - name: Ensure to access the variable "devpc_proxy__envs" from other roles
   set_fact:
-    devpc_proxy__enabled: "{{ devpc_proxy__enabled }}"
-    devpc_proxy__envs: "{{ devpc_proxy__envs }}"
+    devpc_proxy__enabled: '{{ devpc_proxy__enabled }}'
+    devpc_proxy__protocols: '{{ devpc_proxy__protocols }}'

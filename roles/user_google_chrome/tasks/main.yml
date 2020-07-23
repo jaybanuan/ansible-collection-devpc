@@ -1,4 +1,4 @@
-- name: CA certificates
+- name: Google Chrome
   become: yes
   become_user: "{{ devpc__user }}"
   block:

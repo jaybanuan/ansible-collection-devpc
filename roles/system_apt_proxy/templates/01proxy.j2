@@ -1,7 +1,3 @@
-{% if devpc_proxy__envs.http_proxy | default %}
-Acquire::http::proxy "{{ devpc_proxy__envs.http_proxy }}";
-{% endif %}
-
-{% if devpc_proxy__envs.https_proxy | default %}
-Acquire::https::proxy "{{ devpc_proxy__envs.https_proxy }}";
-{% endif %}
+{% for key, value in devpc_proxy__protocols.items() %}
+Acquire::{{ key }}::proxy "{{ value }}";
+{% endfor %}

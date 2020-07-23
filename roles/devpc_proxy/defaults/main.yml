@@ -1,7 +1,15 @@
 devpc_proxy__enabled: true
 
-devpc_proxy__envs:
-  http_proxy: http://192.168.8.8:3128
-  https_proxy: http://192.168.8.8:3128
-  ftp_proxy: http://192.168.8.8:3128
-  no_proxy: 127.0.0.1,localhost
+devpc_proxy__protocols:
+  http: http://192.168.8.8:3128
+  https: http://192.168.8.8:3128
+
+devpc_proxy__no_proxy:
+  - 127.0.0.1
+  - localhost
+
+#devpc_proxy__envs:
+#  http_proxy: http://192.168.8.8:3128
+#  https_proxy: http://192.168.8.8:3128
+#  ftp_proxy: http://192.168.8.8:3128
+#  no_proxy: 127.0.0.1,localhost

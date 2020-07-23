@@ -1,2 +1,4 @@
 [Service]
-Environment={% for key, value in devpc_proxy__envs.items() %}"{{ key }}={{ value }}" {% endfor %}
+{% for key, value in devpc_proxy__envs.items() %}
+Environment="{{ key }}={{ value }}"
+{% endfor %}

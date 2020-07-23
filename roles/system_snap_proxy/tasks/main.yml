@@ -1,0 +1,9 @@
+- name: Snap (proxy configuration)
+  become: true
+  when:
+    - devpc_proxy__enabled
+    - system_snap_proxy__enabled
+  block:
+    - name: Proxy settings
+      command: snap set system proxy.{{ item.key }}={{ item.value }}
+      loop: '{{ devpc_proxy__protocols | dict2items }}'
