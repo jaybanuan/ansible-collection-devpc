@@ -1,3 +1,8 @@
+- name: Ensure to access the variables from other roles
+  set_fact:
+    devpc__superuser: '{{ devpc__superuser }}'
+    devpc__user: '{{ devpc__user }}'
+
 - name: Include roles
   include_role:
     name: "{{ devpc__role_name }}"

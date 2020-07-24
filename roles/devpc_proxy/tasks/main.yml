@@ -12,7 +12,7 @@
   set_fact:
     devpc_proxy__envs: '{{ devpc_proxy__envs | combine({ "no_proxy": devpc_proxy__no_proxy | join(",") }) }}'
 
-- name: Ensure to access the variable "devpc_proxy__envs" from other roles
+- name: Ensure to access the variables from other roles
   set_fact:
     devpc_proxy__enabled: '{{ devpc_proxy__enabled }}'
     devpc_proxy__protocols: '{{ devpc_proxy__protocols }}'
