@@ -4,6 +4,6 @@
   block:
     - name: Add user to the group "docker"
       user:
-        name: "{{ devpc__user }}"
+        name: "{{ devpc__user.name }}"
         groups: docker
         append: yes

@@ -13,7 +13,9 @@
     - system_snap_proxy
     - system_ca_certificates
     - system_timesyncd
+    - system_group
     - system_unattended_upgrades
+    - system_apt_full_upgrade
     - system_python3
     - system_ssh
     - system_cifs_utils
@@ -24,6 +26,7 @@
     - system_google_chrome
     - system_vscode
     - system_misc_apps
+    - user_user
     - user_xdg_user_dirs
     - user_settings
     - user_favorite_apps

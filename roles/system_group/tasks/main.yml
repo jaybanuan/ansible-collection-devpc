@@ -1,0 +1,9 @@
+- name: user
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Create group
+      group:
+        name: "{{ item }}"
+      loop: "{{ system_group__names | default([]) }}"
+  

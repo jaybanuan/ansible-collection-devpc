@@ -3,10 +3,6 @@
     path: "{{ system_fstab_cifs__entry.mount_point }}"
     state: directory
 
-- name: Create group
-  group:
-    name: "{{ system_fstab_cifs__entry.gid }}"
-
 - name: Create credentials file
   ini_file:
     path: "_{{ system_fstab_cifs__entry.credentials_file }}"

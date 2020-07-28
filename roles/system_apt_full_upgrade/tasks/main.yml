@@ -1,0 +1,8 @@
+- name: Update all packages
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Update all packages
+      apt:
+        upgrade: full
+        update_cache: yes

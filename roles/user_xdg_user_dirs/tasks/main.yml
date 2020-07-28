@@ -1,6 +1,6 @@
 - name: XDG user directories
   become: true
-  become_user: "{{ devpc__user }}"
+  become_user: "{{ devpc__user.name }}"
   block:
     - name: Update XDG user directories
       script: xdg-user-dirs-init.sh

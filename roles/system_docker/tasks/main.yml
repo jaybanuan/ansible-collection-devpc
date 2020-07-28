@@ -4,9 +4,7 @@
   block:
     - name: Install dependencies
       apt:
-        name: "{{ system_docker__packages }}"
-      vars:
-        system_docker__packages:
+        name:
           - apt-transport-https
           - ca-certificates
           - curl
@@ -16,8 +14,6 @@
     - name: Add signing key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
-#        keyring: /etc/apt/trusted.gpg.d/docker.gpg
-    #    validate_certs: no
     
     - name: Get Ubuntu code name
       shell: lsb_release -cs

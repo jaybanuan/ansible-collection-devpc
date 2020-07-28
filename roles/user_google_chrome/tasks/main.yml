@@ -1,6 +1,6 @@
 - name: Google Chrome
   become: yes
-  become_user: "{{ devpc__user }}"
+  become_user: "{{ devpc__user.name }}"
   block:
     # see below 
     #   https://wiki.debian.org/DefaultWebBrowser

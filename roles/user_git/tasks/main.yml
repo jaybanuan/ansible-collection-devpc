@@ -1,6 +1,6 @@
 - name: Git
   become: true
-  become_user: "{{ devpc__user }}"
+  become_user: "{{ devpc__user.name }}"
   block:
     - name: Create directory ~/bin
       file:

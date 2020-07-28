@@ -1,6 +1,6 @@
 - name: Ansible
   become: true
-  become_user: "{{ devpc__user }}"
+  become_user: "{{ devpc__user.name }}"
   block:
     - name: Install Ansible
       pip:

@@ -1,0 +1,14 @@
+- name: user
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: user
+      user:
+        name: "{{ devpc__user.name }}"
+        group: "{{ devpc__user.group | default(omit) }}"
+        groups: "{{ devpc__user.groups | default(omit) }}"
+        append: yes
+        password: "{{ devpc__user.password | default(omit) }}"
+        update_password: on_create
+        create_home: yes
+        shell: /bin/bash
