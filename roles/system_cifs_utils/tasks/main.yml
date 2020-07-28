@@ -1,0 +1,7 @@
+- name: cifs-utils
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install cifs-utils
+      apt:
+        name: cifs-utils

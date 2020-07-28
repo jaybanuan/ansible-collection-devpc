@@ -1,0 +1,45 @@
+- name: Create mount point
+  file:
+    path: "{{ system_fstab_cifs__entry.mount_point }}"
+    state: directory
+
+- name: Create group
+  group:
+    name: "{{ system_fstab_cifs__entry.gid }}"
+
+- name: Create credentials file
+  ini_file:
+    path: "_{{ system_fstab_cifs__entry.credentials_file }}"
+    section: null
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    mode: 0600
+    no_extra_spaces: yes
+  loop: "{{ system_fstab_cifs__entry.credentials_entries | dict2items }}"
+
+- name: Mount cifs file system
+  mount:
+    src: "{{ system_fstab_cifs__fstab_entry.file_system }}"
+    path: "{{ system_fstab_cifs__fstab_entry.mount_point }}"
+    fstype: "{{ system_fstab_cifs__fstab_entry.fstype }}"
+    opts: "{{ (system_fstab_cifs__fstab_entry.options + system_fstab_cifs__fstab_entry.extra_options) | join(',') }}"
+    dump: "{{ system_fstab_cifs__fstab_entry.dump }}"
+    passno: "{{ system_fstab_cifs__fstab_entry.pass }}"
+    state: mounted
+  vars:
+    system_fstab_cifs__fstab_entry:
+      file_system: "{{ system_fstab_cifs__entry.file_system }}"
+      mount_point: "{{ system_fstab_cifs__entry.mount_point }}"
+      fstype: cifs
+      options:
+        - _netdev
+        - x-systemd.automount
+        - credentials={{ system_fstab_cifs__entry.credentials_file }}
+        - uid={{ system_fstab_cifs__entry.uid }}
+        - gid={{ system_fstab_cifs__entry.gid }}
+        - file_mode={{ system_fstab_cifs__entry.file_mode | default("0660", true) }}
+        - dir_mode={{ system_fstab_cifs__entry.dir_mode | default("0770", true) }}
+        - noserverino
+      extra_options: "{{ system_fstab_cifs__entry.extra_options | default([], true) }}"
+      dump: "0"
+      pass: "0"

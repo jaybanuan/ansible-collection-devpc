@@ -1,0 +1,9 @@
+- name: cifs-utils
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: fstab cifs
+      include_tasks: fstab_cifs.yml
+      loop: "{{ system_fstab_cifs__entries }}"
+      loop_control:
+        loop_var: system_fstab_cifs__entry
