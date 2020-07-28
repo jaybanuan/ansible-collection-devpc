@@ -13,8 +13,11 @@
     - system_snap_proxy
     - system_ca_certificates
     - system_timesyncd
+    - system_unattended_upgrades
     - system_python3
     - system_ssh
+    - system_cifs_utils
+    - system_fstab_cifs
     - system_docker
     - system_docker_proxy
     - system_git
