@@ -1,2 +1,3 @@
-system_group__names:
-  - developer
+system_group__groups:
+  - name: developer
+    gid: 10000
