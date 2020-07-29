@@ -1,5 +1,9 @@
 - name: Favorite apps
-  dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    # use string filter to avoid potential conversion problems, see dconf module reference
-    value: "{{ user_favorite_apps__desktop_files | string }}"
+  become: true
+  become_user: "{{ devpc__user.name }}"
+  block:
+    - name: Favorite apps
+      dconf:
+        key: "/org/gnome/shell/favorite-apps"
+        # use string filter to avoid potential conversion problems, see dconf module reference
+        value: "{{ user_favorite_apps__desktop_files | string }}"

@@ -2,5 +2,14 @@ devpc__superuser: root
 
 devpc__user:
   name: devuser
-  groups: developer
+  groups:
+    - adm
+    - cdrom
+    - sudo
+    - dip
+    - plugdev
+    - lpadmin
+    - lxd
+    - sambashare
+    - developer
   password: $6$56cxRLI61/jqW$hz7WFl0qSCZSphtCw53qNHQqjfgqMJl5Ro81JttYqiIhptsGmFebDFs.zTp9xMMMY4zPAuWN4z/SlE3.LdPlJ/
