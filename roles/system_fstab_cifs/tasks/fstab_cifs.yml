@@ -5,7 +5,7 @@
 
 - name: Create credentials file
   ini_file:
-    path: "_{{ system_fstab_cifs__entry.credentials_file }}"
+    path: "{{ system_fstab_cifs__entry.credentials_file }}"
     section: null
     option: "{{ item.key }}"
     value: "{{ item.value }}"
