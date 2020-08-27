@@ -1,1 +1,1 @@
-ansible_ssh_common_args: -C -o ControlMaster=no
+ansible_ssh_common_args: -C -o ControlPath=none
