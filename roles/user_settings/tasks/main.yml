@@ -9,5 +9,6 @@
       loop: "{{ user_settings__entries | dict2items }}"
       vars:
         user_settings__entries:
+          "/org/gnome/desktop/privacy/remember-recent-files": "false"
           "/org/gnome/desktop/screensaver/lock-enabled": "false"
           "/org/gnome/desktop/session/idle-delay": "0"
