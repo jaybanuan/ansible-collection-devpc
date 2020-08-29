@@ -5,7 +5,6 @@
     - name: Add signing key
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
-#        keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
       
     - name: Add apt repository
       apt_repository:
