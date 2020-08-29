@@ -1,0 +1,9 @@
+- name: virt-manager
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install virt-manager
+      apt:
+        name:
+          - virt-manager
+          - ssh-askpass-gnome

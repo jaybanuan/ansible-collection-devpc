@@ -11,7 +11,6 @@
           - curl
           - tree
           - meld
-          - virt-manager
 
     - name: Install Slack
       snap:

@@ -25,6 +25,7 @@
     - system_git
     - system_google_chrome
     - system_vscode
+    - system_virt_manager
     - system_misc_apps
     - user_user
     - user_xdg_user_dirs
