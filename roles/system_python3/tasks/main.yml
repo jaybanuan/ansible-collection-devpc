@@ -7,7 +7,7 @@
         name:
           - python3-pip
 
-    - name: Install Ansible and dependencies those some modules use
+    - name: Install Ansible dependencies those are used by some modules
       pip:
         name:
           - psutil
