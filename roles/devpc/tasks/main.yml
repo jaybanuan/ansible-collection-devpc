@@ -27,7 +27,7 @@
     - system_google_chrome
     - system_vscode
     - system_virt_manager
-    - system_misc_apps
+    - system_misc_packages
     - user_user
     - user_xdg_user_dirs
     - user_settings

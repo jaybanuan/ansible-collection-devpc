@@ -1,12 +1,10 @@
-- name: Misc Apps
+- name: Misc packages
   become: true
   become_user: "{{ devpc__superuser }}"
   block:
-    - name: Install Misc Apps
+    - name: Install misc packages
       apt:
-        name: "{{ system_misc_apps__packages }}"
-      vars:
-        system_misc_apps__packages:
+        name:
           - curl
           - tree
           - meld
