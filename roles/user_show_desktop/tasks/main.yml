@@ -1,4 +1,21 @@
 - name: show desktop
   become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: Install xdotool
+      apt:
+        name: xdotool
+
+- name: show desktop
+  become: true
   become_user: "{{ devpc__user.name }}"
   block:
+    - name: Create directory
+      file:
+        path: ~/.local/share/applications
+        state: directory
+
+    - name: Copy desktop file
+      copy:
+        src: show-desktop.desktop
+        dest: ~/.local/share/applications/show-desktop.desktop

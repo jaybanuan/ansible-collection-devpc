@@ -15,6 +15,7 @@
     - system_timesyncd
     - system_group
     - system_unattended_upgrades
+    - system_apt_update
     - system_apt_full_upgrade
     - system_python3
     - system_ssh
@@ -30,6 +31,7 @@
     - user_user
     - user_xdg_user_dirs
     - user_settings
+    - user_show_desktop
     - user_favorite_apps
     - user_docker
     - user_git

@@ -5,4 +5,3 @@
     - name: Update all packages
       apt:
         upgrade: full
-        update_cache: yes

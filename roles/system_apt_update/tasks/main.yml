@@ -1,0 +1,7 @@
+- name: Update apt cache
+  become: true
+  become_user: "{{ devpc__superuser }}"
+  block:
+    - name: apt update
+      apt:
+        update_cache: yes
